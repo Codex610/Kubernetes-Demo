@@ -1,0 +1,52 @@
+1.Build the app(any) and test in local
+2.Start dockerhub and docker-desktop
+3.Prepare the dockerfile in the project
+
+4.Create the docker image and test it:-
+  >> docker build -t kubernetes-test-app:latest
+  >> docker image
+  >> docker run -p 5000:5000 kubernetes-test-app:latest
+
+5.Create deployment.yaml
+
+6.Install Minikube
+  >> Go to: https:/
+  >> .exe download -> powershell command -> Run via powershell as admin -> restart terminal(reboot)
+
+>> minikube start / minikube start --embed-certs
+
+>> minikube status
+
+>> kubectl get all -A 
+>> kubectl get pods -A 
+>> kubectl get nodes -A 
+
+>> How to add new node ? - minikube start --nodes=2 / minikube start --nodes=2 --embed-certs
+
+>> minikube image list
+>> docker images
+>> minikube image load kubernetes-test-app:latest
+
+>> kubectl apply -f deployment.yaml (from project directory)
+>> kubectl delete deployment kubernetes-test-app (conditional)
+
+>> kubectl get pods -A 
+>> kubectl get nodes -A 
+
+>> kubectl delete pod <pod-name/id>
+>> minikube service kubernetes-test-app
+>> minikube dashboard
+
+>> kubectl get endpoints
+>> kubectl get service
+
+** Load balancing **
+>> kubectl get pods
+>> kubectl logs -f <pod-id>
+>> Postman -> Collection -> Runs _> Performance -> Run Performance Test -> Performance -> (Fixed -> 10 User -> 1min)
+
+>> minikube stop
+
+for status : ImagePullBackOff issue
+>> docker tag kubernetes-test-app:latest codex0803/kubernetes-test-app:latest
+>> docker push codex0803/kubernetes-test-app:latest
